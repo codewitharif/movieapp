@@ -1,73 +1,66 @@
 import React from "react";
+import Carousel from "react-multi-carousel";
+import "react-multi-carousel/lib/styles.css";
 
-const Slider = () => {
+const Slider = ({ items }) => {
+  // Configuring the carousel settings
+  const responsive = {
+    desktop: {
+      breakpoint: { max: 3000, min: 1024 },
+      items: 3,
+    },
+    tablet: {
+      breakpoint: { max: 1024, min: 464 },
+      items: 2,
+    },
+    mobile: {
+      breakpoint: { max: 464, min: 0 },
+      items: 1,
+    },
+  };
+
+  // Custom left arrow function
+  const CustomLeftArrow = ({ onClick }) => {
+    return null; // Returning null to hide the default left arrow
+  };
+
+  // Custom right arrow function
+  const CustomRightArrow = ({ onClick }) => {
+    return null; // Returning null to hide the default right arrow
+  };
+
   return (
     <div
-      className="px-9"
-      style={{
-        width: "100%",
-        marginLeft: "auto",
-        marginRight: "auto",
-      }}
+      className="flex justify-center items-center " // Center the div horizontally and vertically
+      style={{ width: "100%", height: "100%" }}
     >
-      <div className="carousel w-full" style={{ height: "200px" }}>
-        <div id="slide1" className="carousel-item relative w-full">
-          <img
-            src="https://daisyui.com/images/stock/photo-1625726411847-8cbb60cc71e6.jpg"
-            className="w-full"
-          />
-          <div className="absolute flex justify-between transform -translate-y-1/2 left-5 right-5 top-1/2">
-            <a href="#slide4" className="btn btn-circle">
-              ❮
-            </a>
-            <a href="#slide2" className="btn btn-circle">
-              ❯
-            </a>
+      <Carousel
+        swipeable={false}
+        draggable={true}
+        showDots={false}
+        responsive={responsive}
+        infinite={true} // Enabling infinite scrolling
+        autoPlay={true}
+        autoPlaySpeed={2000}
+        keyBoardControl={false}
+        customTransition="transform 300ms ease-out"
+        transitionDuration={300}
+        className="carousel carousel-center max-w-md p-4 space-x-4 rounded-box"
+        customLeftArrow={<CustomLeftArrow />} // Hiding the default left arrow
+        customRightArrow={<CustomRightArrow />} // Hiding the default right arrow
+      >
+        {items.map((item, index) => (
+          <div key={index} className="px-9">
+            {/* Your carousel item content */}
+            <img
+              src={item.imageUrl}
+              alt={item.title}
+              width={100}
+              height={100}
+            />
           </div>
-        </div>
-        <div id="slide2" className="carousel-item relative w-full">
-          <img
-            src="https://daisyui.com/images/stock/photo-1609621838510-5ad474b7d25d.jpg"
-            className="w-full"
-          />
-          <div className="absolute flex justify-between transform -translate-y-1/2 left-5 right-5 top-1/2">
-            <a href="#slide1" className="btn btn-circle">
-              ❮
-            </a>
-            <a href="#slide3" className="btn btn-circle">
-              ❯
-            </a>
-          </div>
-        </div>
-        <div id="slide3" className="carousel-item relative w-full">
-          <img
-            src="https://daisyui.com/images/stock/photo-1414694762283-acccc27bca85.jpg"
-            className="w-full"
-          />
-          <div className="absolute flex justify-between transform -translate-y-1/2 left-5 right-5 top-1/2">
-            <a href="#slide2" className="btn btn-circle">
-              ❮
-            </a>
-            <a href="#slide4" className="btn btn-circle">
-              ❯
-            </a>
-          </div>
-        </div>
-        <div id="slide4" className="carousel-item relative w-full">
-          <img
-            src="https://daisyui.com/images/stock/photo-1665553365602-b2fb8e5d1707.jpg"
-            className="w-full"
-          />
-          <div className="absolute flex justify-between transform -translate-y-1/2 left-5 right-5 top-1/2">
-            <a href="#slide3" className="btn btn-circle">
-              ❮
-            </a>
-            <a href="#slide1" className="btn btn-circle">
-              ❯
-            </a>
-          </div>
-        </div>
-      </div>
+        ))}
+      </Carousel>
     </div>
   );
 };

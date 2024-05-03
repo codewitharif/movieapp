@@ -1,0 +1,18 @@
+.movie-list {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 20px;
+}
+
+.movie-item {
+  width: calc(
+    33.33% - 10px
+  ); /* Adjust this value to add spacing between items */
+  display: block;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+  text-align: center;
+}
