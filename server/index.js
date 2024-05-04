@@ -12,7 +12,11 @@ const port = 3000;
 
 app.use(
   cors({
-    origin: ["https://movieappx.vercel.app", "*"],
+    origin: [
+      "https://movieappx.vercel.app",
+      "https://movieappi.netlify.app",
+      "*",
+    ],
     methods: ["GET", "POST"],
     credentials: true,
   })
