@@ -18,14 +18,14 @@ app.get("/", async (req, res) => {
   res.status(200).json("server is running...");
 });
 
-// app.get("/movies", async (req, res) => {
-//   try {
-//     const movies = await Movie.find(); // Retrieve all movies from the database
-//     res.status(200).json(movies); // Send the movies as JSON response
-//   } catch (error) {
-//     res.status(500).json({ error: "Failed to fetch movies." });
-//   }
-// });
+app.get("/getmovies", async (req, res) => {
+  try {
+    const movies = await Movie.find(); // Retrieve all movies from the database
+    res.status(200).json(movies); // Send the movies as JSON response
+  } catch (error) {
+    res.status(500).json({ error: "Failed to fetch movies." });
+  }
+});
 
 //add movie api
 app.post("/addmovie", async (req, res) => {
@@ -44,9 +44,8 @@ app.post("/addmovie", async (req, res) => {
     }
   }
 });
-
 // Define the base URL of the external API
-const baseUrl = "https://movieappserver.vercel.app";
+const baseUrl = "http://localhost:3000";
 
 //read movie api with pagination
 app.get("/movies", async (req, res) => {
@@ -60,7 +59,7 @@ app.get("/movies", async (req, res) => {
     const endIndex = page * limit;
 
     // Fetch all movies from the external API
-    const response = await fetch(`${baseUrl}/movies`);
+    const response = await fetch(`${baseUrl}/getmovies`);
     const data = await response.json();
 
     // Slice the data array to get the subset for the current page

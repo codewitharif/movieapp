@@ -6,6 +6,8 @@ const Movierequest = () => {
       <h1 className="text-center text-4xl font-medium mb-8 mt-8">
         Movie Request
       </h1>
+      <h3>All My Post are Free Available On INTERNET Posted By Somebody Else,</h3>
+      
     </div>
   );
 };
