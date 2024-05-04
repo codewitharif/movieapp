@@ -15,9 +15,9 @@ const Data = () => {
   const fetchData = async () => {
     setLoading(true);
     try {
-      let url = `http://localhost:3000/movies?page=${currentPage}&limit=8`;
+      let url = `https://movieappx.vercel.app/movies?page=${currentPage}&limit=8`;
       if (searchQuery) {
-        url = `http://localhost:3000/search/${searchQuery}`;
+        url = `https://movieappx.vercel.app/search/${searchQuery}`;
       }
       const response = await fetch(url);
       if (response.status != 200) {

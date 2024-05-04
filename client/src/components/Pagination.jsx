@@ -15,7 +15,7 @@ const Pagination = ({ onPageChange }) => {
     setIsLoading(true);
     try {
       const response = await axios.get(
-        `http://localhost:3000/movies?page=${currentPage}&limit=8`
+        `https://movieappx.vercel.app/movies?page=${currentPage}&limit=8`
       );
       const { results, metadata } = response.data;
       if (metadata && metadata.totalPages !== undefined) {

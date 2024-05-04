@@ -10,7 +10,13 @@ const port = 3000;
 
 // Middleware
 
-app.use(cors());
+app.use(
+  cors({
+    origin: ["https://movieappx.vercel.app", "*"],
+    methods: ["GET", "POST"],
+    credentials: true,
+  })
+);
 
 app.use(express.json());
 
@@ -45,7 +51,7 @@ app.post("/addmovie", async (req, res) => {
   }
 });
 // Define the base URL of the external API
-const baseUrl = "http://localhost:3000";
+const baseUrl = "https://movieappserver.vercel.app";
 
 //read movie api with pagination
 app.get("/movies", async (req, res) => {
